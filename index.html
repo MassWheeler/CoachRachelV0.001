@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tennis Coach App Prototype</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f6f6f6;
+        color: #222;
+    }
+
+    /* Mobile-first container */
+    .app-wrapper {
+        max-width: 480px;
+        margin: 0 auto;
+        background: white;
+        min-height: 100vh;
+        position: relative;
+        padding-bottom: 70px;
+    }
+
+    h2 { margin: 20px 16px 10px; }
+
+    /* Navigation bar */
+    .nav-bar {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 480px;
+        width: 100%;
+        background: #1b1f1d;
+        display: flex;
+        justify-content: space-around;
+        padding: 8px 0;
+    }
+
+    .nav-item {
+        color: white;
+        font-size: 12px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .nav-item span {
+        display: block;
+        font-size: 20px;
+        margin-bottom: 2px;
+    }
+
+    /* Screen visibility */
+    .screen {
+        display: none;
+        animation: fade 0.25s ease;
+    }
+    .active { display: block; }
+
+    @keyframes fade {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* Buttons */
+    .pill-btn {
+        background: #2ecc71;
+        color: white;
+        padding: 10px 14px;
+        border-radius: 20px;
+        font-size: 14px;
+        margin: 5px;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    /* Cards */
+    .card {
+        background: white;
+        border-radius: 14px;
+        padding: 12px;
+        margin: 10px 16px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .thumb {
+        width: 100%;
+        height: 150px;
+        background: #d3e9d1;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .play-btn {
+        background: #27ae60;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 10px;
+        margin-top: 8px;
+        display: inline-block;
+        font-size: 13px;
+        cursor: pointer;
+    }
+
+    /* Lists */
+    .category-list { margin: 10px 16px; }
+    .category-item {
+        padding: 12px;
+        background: #e9f5e7;
+        border-radius: 10px;
+        margin-bottom: 8px;
+        cursor: pointer;
+    }
+
+    /* Coach profile */
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+        background: #cce2cc;
+        border-radius: 50%;
+        margin: 20px auto;
+    }
+
+    /* Form */
+    .form-group {
+        margin: 12px 16px;
+        display: flex;
+        flex-direction: column;
+    }
+    input, select, textarea {
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        margin-top: 4px;
+    }
+    .submit-btn {
+        background: #2ecc71;
+        color: white;
+        padding: 12px;
+        border-radius: 10px;
+        margin: 20px 16px;
+        text-align: center;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<div class="app-wrapper">
+
+    <!-- HOME -->
+    <div id="home" class="screen active">
+        <h2>Welcome to Coach Jamie’s Tennis Hub</h2>
+        <div style="margin: 0 16px 10px;">Choose your category:</div>
+
+        <div style="margin: 10px 16px;">
+            <span class="pill-btn">Children</span>
+            <span class="pill-btn">Adults</span>
+            <span class="pill-btn">Beginners</span>
+            <span class="pill-btn">Intermediate</span>
+            <span class="pill-btn">Advanced</span>
+        </div>
+
+        <h2>Featured Videos</h2>
+        <div class="card">
+            <div class="thumb"></div>
+            <div><strong>Perfect Your Serve</strong></div>
+            <div>12 min • Intermediate</div>
+            <div class="play-btn">Play</div>
+        </div>
+
+        <div class="card">
+            <div class="thumb"></div>
+            <div><strong>Junior Footwork Basics</strong></div>
+            <div>8 min • Kids</div>
+            <div class="play-btn">Play</div>
+        </div>
+
+        <h2>Continue Learning</h2>
+        <div class="card">
+            <div class="thumb"></div>
+            <div><strong>Forehand Consistency Routine</strong></div>
+            <div>10 min • All levels</div>
+            <div class="play-btn">Resume</div>
+        </div>
+    </div>
+
+    <!-- VIDEO LIBRARY -->
+    <div id="videos" class="screen">
+        <h2>Video Library</h2>
+
+        <div class="category-list">
+            <div class="category-item">Kids coaching</div>
+            <div class="category-item">Adult coaching</div>
+            <div class="category-item">Beginner lessons</div>
+            <div class="category-item">Footwork drills</div>
+            <div class="category-item">Serve technique</div>
+            <div class="category-item">Forehand</div>
+            <div class="category-item">Backhand</div>
+            <div class="category-item">Match tactics</div>
+            <div class="category-item">Fitness & warm-ups</div>
+        </div>
+
+        <div class="card">
+            <div class="thumb"></div>
+            <strong>Serve Fundamentals</strong>
+            <div>6 min • Beginner</div>
+            <p>Learn the core motions behind a consistent serve.</p>
+            <div class="play-btn">Play</div>
+        </div>
+
+        <div class="card">
+            <div class="thumb"></div>
+            <strong>Advanced Footwork Grid</strong>
+            <div>14 min • Advanced</div>
+            <p>Explosive movement patterns for high‑level players.</p>
+            <div class="play-btn">Play</div>
+        </div>
+    </div>
+
+    <!-- GUIDES -->
+    <div id="guides" class="screen">
+        <h2>Guides & Tutorials</h2>
+
+        <div class="card">
+            <strong>How to Hold the Racket</strong>
+            <p>Essential grip fundamentals for all playing styles.</p>
+        </div>
+
+        <div class="card">
+            <strong>Basic Forehand Technique</strong>
+            <p>Learn swing path, timing, and contact point.</p>
+        </div>
+
+        <div class="card">
+            <strong>How to Serve Properly</strong>
+            <p>A step-by-step breakdown to build confidence.</p>
+        </div>
+
+        <div class="card">
+            <strong>Tennis Rules for Beginners</strong>
+            <p>Everything a new player needs to know.</p>
+        </div>
+
+        <div class="card">
+            <strong>Match Day Preparation</strong>
+            <p>Warm-up, mindset, hydration, and gear checklist.</p>
+        </div>
+
+        <div class="card">
+            <strong>Footwork Drills for Juniors</strong>
+            <p>Improve agility and balanced movement.</p>
+        </div>
+    </div>
+
+    <!-- STUDENT CATEGORIES -->
+    <div id="categories" class="screen">
+        <h2>Student Categories</h2>
+
+        <div class="card">
+            <strong>Children</strong>
+            <p>Fun, safe, high‑energy lessons with fundamentals.</p>
+        </div>
+        <div class="card">
+            <strong>Adults</strong>
+            <p>Flexible sessions designed for busy schedules.</p>
+        </div>
+        <div class="card">
+            <strong>Private Lessons</strong>
+            <p>One‑to‑one coaching tailored to goals.</p>
+        </div>
+        <div class="card">
+            <strong>Group Lessons</strong>
+            <p>Social, team‑based sessions for all levels.</p>
+        </div>
+        <div class="card">
+            <strong>Competition Players</strong>
+            <p>Technical refinement, tactics, and match strategy.</p>
+        </div>
+    </div>
+
+    <!-- COACH PROFILE -->
+    <div id="coach" class="screen">
+        <h2>Coach Profile</h2>
+        <div class="profile-pic"></div>
+
+        <div class="card">
+            <strong>Coach Jamie Thompson</strong><br><br>
+            <strong>Bio:</strong> Former national-level competitor with 15+ years of coaching experience.<br><br>
+            <strong>Qualifications:</strong> LTA Level 4 Performance Coach, Child Safeguarding Certified.<br><br>
+            <strong>Coaching Style:</strong> Positive, technique-focused, player‑first development.
+        </div>
+
+        <div class="submit-btn" onclick="navigate('contact')">
+            Contact / Book a Session
+        </div>
+    </div>
+
+    <!-- BOOKING FORM -->
+    <div id="contact" class="screen">
+        <h2>Book a Lesson</h2>
+
+        <div class="form-group">
+            <label>Name</label>
+            <input placeholder="Your name">
+        </div>
+
+        <div class="form-group">
+            <label>Age group</label>
+            <select>
+                <option>Child</option>
+                <option>Teen</option>
+                <option>Adult</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Skill level</label>
+            <select>
+                <option>Beginner</option>
+                <option>Intermediate</option>
+                <option>Advanced</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Preferred lesson type</label>
+            <select>
+                <option>Private lesson</option>
+                <option>Group session</option>
+                <option>Competition coaching</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Message</label>
+            <textarea rows="4" placeholder="Tell us about your goals..."></textarea>
+        </div>
+
+        <div class="submit-btn">Submit</div>
+    </div>
+
+</div>
+
+<!-- NAVIGATION -->
+<div class="nav-bar">
+    <div class="nav-item" onclick="navigate('home')"><span>🏠</span>Home</div>
+    <div class="nav-item" onclick="navigate('videos')"><span>🎾</span>Videos</div>
+    <div class="nav-item" onclick="navigate('guides')"><span>📘</span>Guides</div>
+    <div class="nav-item" onclick="navigate('categories')"><span>👥</span>Students</div>
+    <div class="nav-item" onclick="navigate('coach')"><span>👤</span>Coach</div>
+</div>
+
+<script>
+function navigate(screen) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(screen).classList.add('active');
+    window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>
